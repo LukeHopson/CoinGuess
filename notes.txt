@@ -1,0 +1,5 @@
+populate the countries in dropdown with like js
+get good color scheme
+write about page and add submit bar
+
+then code back end, maybe java spring idk
