@@ -29,8 +29,9 @@
 
 <div class="col d-flex justify-content-center">
   <div class="card" style="width: 18rem; margin-top: 2rem;">
-    <img th:src="${shownCoin.reverse}" class="card-img-top" alt="Image not found">
+    <img th:src="${shownCoin.reversePic}" class="card-img-top" alt="Image not found">
     <p class="text-center">Which country is this coin from?</p>
+    <!--use this to get answers easy when testing<p th:text="${shownCoin.reversePic}"></p>-->
     <form action="/" th:action="@{/}" th:object="${answer}" method="post">
         <div class="d-flex justify-content-center">
             <select class="selectpicker show-tick" data-size="6" data-dropup-auto="false" data-live-search="true" data-width="300px" id="dropdown" th:field="*{answer}">

@@ -36,10 +36,10 @@
 
     <div class="col d-flex justify-content-center">
         <div class="card" style="width: 18rem; margin-top: 2rem;">
-            <img th:src="${shownCoin.obverse}" class="card-img-top" alt="Image not found">
+            <img th:src="${shownCoin.obversePic}" class="card-img-top" alt="Image not found">
         </div>
         <div class="card" style="width: 18rem; margin-top: 2rem;">
-            <img th:src="${shownCoin.reverse}" class="card-img-top" alt="Image not found">
+            <img th:src="${shownCoin.reversePic}" class="card-img-top" alt="Image not found">
         </div>
     </div>
     <p class="text-center">Photos by: </p>
@@ -48,8 +48,8 @@
         <div class="card text-center text-white bg-success mb-3" style="max-width: 18rem; margin-top: 2rem;">
             <div class="card-body">
                 <h5 class="card-title">Correct!</h5>
-                <p th:text="'The coin was from: ' + ${shownCoin.country}"></p>
-                <a href="#" class="btn btn-secondary">Next Question</a>
+                <p th:text="'The coin was from: ' + ${shownCoin.issuer}"></p>
+                <a href="/" class="btn btn-secondary">Next Question</a>
             </div>
         </div>
     </div>

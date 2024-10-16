@@ -12,14 +12,21 @@ import com.coinguess.coin.Objects.Coin;
 
 import jakarta.servlet.http.HttpSession;
 
+// To read csv file
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.*;
+
 @Controller
 @SessionAttributes("shownCoin")
 public class MenuController {
 
     @GetMapping("/")
     public String menuForm(Model model) {
-        // TODO: Generate random coin each time from the csv instead of this test one
-        Coin shownCoin = new Coin("Australia", "https://en.numista.com/catalogue/photos/australie/9067-original.jpg", "https://en.numista.com/catalogue/photos/australie/9066-original.jpg", "");
+        List<Coin> coinList = loadCoinsFromCSV("src/main/resources/static/2003.csv");
+        Coin shownCoin = getRandomCoin(coinList);
         model.addAttribute("shownCoin", shownCoin);
         model.addAttribute("answer", new Answer(""));
         return "menu"; 
@@ -39,12 +46,46 @@ public class MenuController {
         
         model.addAttribute("answer", answer);
         
-        if (shownCoin.getCountry().equals(answer.answer)) {
+        if (shownCoin.getIssuer().equals(answer.answer)) {
             return "correct";
         } else {
             return "wrong";
         }
     }
 
+    private List<Coin> loadCoinsFromCSV(String filePath){
+        List<Coin> coinList = new ArrayList<>();
+        String line = "";
+        boolean firstLineRead = false;
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(filePath));
+            while ((line = reader.readLine()) != null){
+                // Need to skip the header line, it cannot be used to create a coin object!
+                if (!firstLineRead){
+                    firstLineRead = true;
+                    continue;
+                }
+                String[] data = line.split(","); // Split line on commas
+                // Create coin object added to ArrayList with read data
+                int id = Integer.parseInt(data[0]);
+                coinList.add(new Coin(id, data[1], data[2], data[3], data[4], data[5], data[6], data[7]));
+            }
+            reader.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return coinList;
+    }
+
+    private Coin getRandomCoin(List<Coin> coinList){
+        // Generate a random int within the size of the coinList
+        Random rand = new Random();
+        int random = rand.nextInt(coinList.size());
+        // Use that random number as the index to get a coin from the list
+        Coin randomCoin = coinList.get(random);
+        return randomCoin;
+    }
     
 }

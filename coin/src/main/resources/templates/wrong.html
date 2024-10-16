@@ -29,16 +29,16 @@
 
     <div class="col d-flex justify-content-center">
         <div class="card" style="width: 18rem; margin-top: 2rem;">
-            <img th:src="${shownCoin.obverse}" class="card-img-top" alt="Image not found">
+            <img th:src="${shownCoin.obversePic}" class="card-img-top" alt="Image not found">
         </div>
         <div class="card" style="width: 18rem; margin-top: 2rem;">
-            <img th:src="${shownCoin.reverse}" class="card-img-top" alt="Image not found">
+            <img th:src="${shownCoin.reversePic}" class="card-img-top" alt="Image not found">
         </div>
     </div>
 
     <h1>Selected Answer</h1>
     <p th:text="'Selected Answer: ' + ${answer.answer}"></p>
-    <p th:text="'Actual: ' + ${shownCoin.country}"></p>
+    <p th:text="'Actual: ' + ${shownCoin.issuer}"></p>
 </body>
 
 </html>

@@ -1,5 +1,7 @@
-populate the countries in dropdown with like js
-get good color scheme
-write about page and add submit bar
+This is my todo list lol
 
-then code back end, maybe java spring idk
+get good color scheme
+
+IMPORTANT:
+REMOVE COMMENTS AND DATES FROM CSV FILE ISSUER, OTHERWISE IT WONT MATCH
+REMOVE EURO COINS (do -euro when getting numsitia data pull), they either tell the answer on one side, or look the same on the other
