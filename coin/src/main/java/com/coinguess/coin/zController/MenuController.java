@@ -14,9 +14,11 @@ import jakarta.servlet.http.HttpSession;
 
 // To read csv file
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.*;
 
 @Controller
@@ -57,8 +59,8 @@ public class MenuController {
         List<Coin> coinList = new ArrayList<>();
         String line = "";
         boolean firstLineRead = false;
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(filePath));
+        try { // Gotta read arabic characters sometimes to give credit, so need UTF-8
+            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(filePath), "UTF-8"));
             while ((line = reader.readLine()) != null){
                 // Need to skip the header line, it cannot be used to create a coin object!
                 if (!firstLineRead){

@@ -36,9 +36,16 @@
         </div>
     </div>
 
-    <h1>Selected Answer</h1>
-    <p th:text="'Selected Answer: ' + ${answer.answer}"></p>
-    <p th:text="'Actual: ' + ${shownCoin.issuer}"></p>
+    <div class="col d-flex justify-content-center">
+        <div class="card text-center text-white bg-danger mb-3" style="max-width: 18rem; margin-top: 2rem;">
+            <div class="card-body">
+                <h5 class="card-title">Incorrect!</h5>
+                <p th:text="'You said: ' + ${answer.answer}"></p>
+                <p th:text="'The coin was from: ' + ${shownCoin.issuer}"></p>
+                <a href="/" class="btn btn-secondary">Next Question</a>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

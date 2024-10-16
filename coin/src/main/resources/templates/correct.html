@@ -42,8 +42,10 @@
             <img th:src="${shownCoin.reversePic}" class="card-img-top" alt="Image not found">
         </div>
     </div>
-    <p class="text-center">Photos by: </p>
-    <a class="text-center" href="https://www.w3schools.com">Numistia Link</a>
+    <p class="text-center" th:text="'Photos by: ' + ${shownCoin.reverseCopyright}"></p>
+    <div class="text-center">
+        <a class="text-center" th:href="'https://en.numista.com/catalogue/pieces' + ${shownCoin.ID} + '.html'">Numista Link</a>
+    </div>
     <div class="col d-flex justify-content-center">
         <div class="card text-center text-white bg-success mb-3" style="max-width: 18rem; margin-top: 2rem;">
             <div class="card-body">
