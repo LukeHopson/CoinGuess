@@ -82,6 +82,9 @@ public class MenuController {
     }
 
     private Coin getRandomCoin(List<Coin> coinList){
+        if (coinList.isEmpty()) {
+            return null; 
+        }
         // Generate a random int within the size of the coinList
         Random rand = new Random();
         int random = rand.nextInt(coinList.size());
