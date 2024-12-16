@@ -5,8 +5,8 @@ COPY coin/src ./src
 RUN mvn clean package -DskipTests
 
 FROM openjdk:17.0.1-jdk-slim
-WORKDIR /coin
-COPY --from=build /target/coin-0.0.1-SNAPSHOT.jar coin.jar
+WORKDIR /app
+COPY --from=build /coin/target/*.jar coin.jar
 
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "coin.jar"]
