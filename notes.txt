@@ -5,3 +5,6 @@ get good color scheme
 IMPORTANT:
 REMOVE COMMENTS AND DATES FROM CSV FILE ISSUER, OTHERWISE IT WONT MATCH
 REMOVE EURO COINS (do -euro when getting numsitia data pull), they either tell the answer on one side, or look the same on the other
+ADD CREDIT TO WRONG SCREEN, 
+GET MORE COINS
+GO LIVE!
