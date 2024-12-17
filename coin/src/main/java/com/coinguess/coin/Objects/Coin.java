@@ -1,7 +1,9 @@
 package com.coinguess.coin.Objects;
 
+import java.io.Serializable;
+
 // ID,Obverse Copyright,Obverse License,Obverse Picture,Reverse Copyright,Reverse License,Reverse Picture,Issuer
-public class Coin {
+public class Coin implements Serializable {
     public int ID;
     public String obverseCopyright;
     public String obverseLiscense;
