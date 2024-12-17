@@ -36,27 +36,53 @@ public class MenuController {
 
     @PostMapping("/")
     public String menuSubmit(@ModelAttribute Answer answer, Model model, HttpSession session) {
-        Coin shownCoin = (Coin) model.getAttribute("shownCoin");
-        if (shownCoin == null) {
-            return "null"; // Redirect to the main menu if the coin is null
-            // return "error" // Uncomment this to return the error page instead.
-        }
-
-        // For some reason the answer has a comma at the end so we need to remove the last char, otherwise it won't match up!
-        String cutAnswerComma = answer.getAnswer();
-        if (cutAnswerComma != null && cutAnswerComma.endsWith(",")){
-            cutAnswerComma = cutAnswerComma.substring(0, cutAnswerComma.length() - 1);
-            answer.setAnswer(cutAnswerComma); 
+        try {
+            Coin shownCoin = (Coin) model.getAttribute("shownCoin");
+    
+            if (shownCoin == null) {
+                // Log the error or handle the redirection to avoid issues with missing data
+                return "redirect:/"; // Redirect to the main menu if the coin is null
+            }
+    
+            // Process the answer (removing the last comma)
+            String cutAnswerComma = answer.getAnswer();
+            if (cutAnswerComma != null && !cutAnswerComma.isEmpty()) {
+                try {
+                    cutAnswerComma = cutAnswerComma.substring(0, cutAnswerComma.length() - 1);
+                    answer.setAnswer(cutAnswerComma);
+                } catch (Exception e) {
+                    // Handle any potential StringIndexOutOfBoundsException or other issues
+                    System.out.println("Error processing the answer string: " + e.getMessage());
+                    return "error"; // Return an error view if there's an issue
+                }
+            } else {
+                // Handle the case where the answer is null or empty
+                System.out.println("Answer is empty or null, cannot process.");
+                return "error"; // Redirect to error page or return an error view
+            }
+    
             model.addAttribute("answer", answer);
-        }
-        
-        
-        if (shownCoin.getIssuer().equals(answer.answer)) {
-            return "correct";
-        } else {
-            return "wrong";
+    
+            // Compare the answer with the coin's issuer
+            try {
+                if (shownCoin.getIssuer().equals(answer.getAnswer())) {
+                    return "correct"; // If correct, navigate to the correct page
+                } else {
+                    return "wrong"; // If incorrect, navigate to the wrong page
+                }
+            } catch (NullPointerException e) {
+                // Handle the case where either `shownCoin.getIssuer()` or `answer.getAnswer()` is null
+                System.out.println("Error comparing issuer and answer: " + e.getMessage());
+                return "error"; // Return error view if comparison fails
+            }
+    
+        } catch (Exception e) {
+            // General exception handling in case something unexpected happens
+            System.out.println("Unexpected error occurred: " + e.getMessage());
+            return "error"; // Return error view if an unexpected exception occurs
         }
     }
+    
 
     private List<Coin> loadCoinsFromCSV(String filePath){
         List<Coin> coinList = new ArrayList<>();
