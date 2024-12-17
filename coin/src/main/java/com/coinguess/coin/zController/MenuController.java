@@ -38,16 +38,18 @@ public class MenuController {
     public String menuSubmit(@ModelAttribute Answer answer, Model model, HttpSession session) {
         Coin shownCoin = (Coin) model.getAttribute("shownCoin");
         if (shownCoin == null) {
-            return "redirect:/"; // Redirect to the main menu if the coin is null
+            return "null"; // Redirect to the main menu if the coin is null
             // return "error" // Uncomment this to return the error page instead.
         }
 
         // For some reason the answer has a comma at the end so we need to remove the last char, otherwise it won't match up!
         String cutAnswerComma = answer.getAnswer();
-        cutAnswerComma = cutAnswerComma.substring(0, cutAnswerComma.length() - 1);
-        answer.setAnswer(cutAnswerComma); 
+        if (cutAnswerComma != null && cutAnswerComma.endsWith(",")){
+            cutAnswerComma = cutAnswerComma.substring(0, cutAnswerComma.length() - 1);
+            answer.setAnswer(cutAnswerComma); 
+            model.addAttribute("answer", answer);
+        }
         
-        model.addAttribute("answer", answer);
         
         if (shownCoin.getIssuer().equals(answer.answer)) {
             return "correct";

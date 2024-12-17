@@ -6,21 +6,21 @@ import java.io.Serializable;
 public class Coin implements Serializable {
     public int ID;
     public String obverseCopyright;
-    public String obverseLiscense;
+    public String obverseLicense;
     public String obversePic;
     public String reverseCopyright;
-    public String reverseliscense;
+    public String reverseLicense;
     public String reversePic;
     public String issuer;
 
-    public Coin(int iD, String obverseCopyright, String obverseLiscense, String obversePic, String reverseCopyright, String reverseliscense,
+    public Coin(int iD, String obverseCopyright, String obverseLicense, String obversePic, String reverseCopyright, String reverseLicense,
             String reversePic, String issuer) {
         ID = iD;
         this.obverseCopyright = obverseCopyright;
-        this.obverseLiscense = obverseLiscense;
+        this.obverseLicense = obverseLicense;
         this.obversePic = obversePic;
         this.reverseCopyright = reverseCopyright;
-        this.reverseliscense = reverseliscense;
+        this.reverseLicense = reverseLicense;
         this.reversePic = reversePic;
         this.issuer = issuer;
     }
@@ -41,12 +41,12 @@ public class Coin implements Serializable {
         this.obverseCopyright = obverseCopyright;
     }
 
-    public String getObverseLiscense() {
-        return obverseLiscense;
+    public String getObverseLicense() {
+        return obverseLicense;
     }
 
-    public void setObverseLiscense(String obverseLiscense) {
-        this.obverseLiscense = obverseLiscense;
+    public void setObverselicense(String obverselicense) {
+        this.obverseLicense = obverselicense;
     }
 
     public String getObversePic() {
@@ -73,12 +73,12 @@ public class Coin implements Serializable {
         this.reversePic = reversePic;
     }
 
-    public String getReverseliscense() {
-        return reverseliscense;
+    public String getReverselicense() {
+        return reverseLicense;
     }
 
-    public void setReverseliscense(String reverseliscense) {
-        this.reverseliscense = reverseliscense;
+    public void setReverselicense(String reverselicense) {
+        this.reverseLicense = reverselicense;
     }
 
     public String getIssuer() {
