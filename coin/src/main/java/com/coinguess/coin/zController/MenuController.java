@@ -29,14 +29,14 @@ public class MenuController {
     public String menuForm(Model model, HttpSession session) {
         List<Coin> coinList = loadCoinsFromCSV("static/2003.csv"); // This line is specific to my docker build, might need to be change if running local.
         Coin shownCoin = getRandomCoin(coinList);
-        session.setAttribute("shownCoin", shownCoin);
+        model.addAttribute("shownCoin", shownCoin);
         model.addAttribute("answer", new Answer(""));
         return "menu"; 
     }
 
     @PostMapping("/")
     public String menuSubmit(@ModelAttribute Answer answer, Model model, HttpSession session) {
-        Coin shownCoin = (Coin) session.getAttribute("shownCoin");
+        Coin shownCoin = (Coin) model.getAttribute("shownCoin");
         if (shownCoin == null) {
             return "redirect:/"; // Redirect to the main menu if the coin is null
             // return "error" // Uncomment this to return the error page instead.
