@@ -27,7 +27,7 @@ public class MenuController {
 
     @GetMapping("/")
     public String menuForm(Model model) {
-        List<Coin> coinList = loadCoinsFromCSV("src/main/resources/static/2003.csv");
+        List<Coin> coinList = loadCoinsFromCSV("static/2003.csv");
         Coin shownCoin = getRandomCoin(coinList);
         model.addAttribute("shownCoin", shownCoin);
         model.addAttribute("answer", new Answer(""));

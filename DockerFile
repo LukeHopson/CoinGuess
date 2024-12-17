@@ -7,6 +7,6 @@ RUN mvn clean package -DskipTests
 FROM openjdk:17.0.1-jdk-slim
 WORKDIR /app
 COPY --from=build /coin/target/*.jar coin.jar
-
+COPY /coin/src/main/resources/static/2003.csv static/2003.csv
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "coin.jar"]
