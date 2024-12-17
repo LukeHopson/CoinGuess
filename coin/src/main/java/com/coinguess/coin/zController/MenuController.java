@@ -29,7 +29,7 @@ public class MenuController {
     public String menuForm(Model model, HttpSession session) {
         List<Coin> coinList = loadCoinsFromCSV("static/2003.csv"); // This line is specific to my docker build, might need to be change if running local.
         Coin shownCoin = getRandomCoin(coinList);
-        model.addAttribute("shownCoin", shownCoin);
+        session.setAttribute("shownCoin", shownCoin);
         model.addAttribute("answer", new Answer(""));
         return "menu"; 
     }
@@ -38,7 +38,8 @@ public class MenuController {
     public String menuSubmit(@ModelAttribute Answer answer, Model model, HttpSession session) {
         Coin shownCoin = (Coin) session.getAttribute("shownCoin");
         if (shownCoin == null) {
-            return "error";
+            return "redirect:/"; // Redirect to the main menu if the coin is null
+            // return "error" // Uncomment this to return the error page instead.
         }
 
         // For some reason the answer has a comma at the end so we need to remove the last char, otherwise it won't match up!
