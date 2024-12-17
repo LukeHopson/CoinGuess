@@ -26,7 +26,7 @@ import java.util.*;
 public class MenuController {
 
     @GetMapping("/")
-    public String menuForm(Model model) {
+    public String menuForm(Model model, HttpSession session) {
         List<Coin> coinList = loadCoinsFromCSV("static/2003.csv"); // This line is specific to my docker build, might need to be change if running local.
         Coin shownCoin = getRandomCoin(coinList);
         model.addAttribute("shownCoin", shownCoin);
