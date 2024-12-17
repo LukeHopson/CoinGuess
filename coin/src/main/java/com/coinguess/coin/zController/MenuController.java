@@ -27,8 +27,9 @@ public class MenuController {
 
     @GetMapping("/")
     public String menuForm(Model model) {
-        List<Coin> coinList = loadCoinsFromCSV("static/2003.csv");
+        List<Coin> coinList = loadCoinsFromCSV("static/2003.csv"); // This line is specific to my docker build, might need to be change if running local.
         Coin shownCoin = getRandomCoin(coinList);
+        shownCoin = getRandomCoin(coinList); // Checking if this does a fix
         model.addAttribute("shownCoin", shownCoin);
         model.addAttribute("answer", new Answer(""));
         return "menu"; 
