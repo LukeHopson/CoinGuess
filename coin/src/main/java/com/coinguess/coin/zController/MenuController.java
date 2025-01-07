@@ -16,7 +16,6 @@ import jakarta.servlet.http.HttpSession;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
@@ -27,7 +26,7 @@ public class MenuController {
 
     @GetMapping("/")
     public String menuForm(Model model, HttpSession session) { 
-        List<Coin> coinList = loadCoinsFromCSV("static/2003.csv"); // This line is specific to my docker build, might need to be changed to //src/main/resources/static/2003.csv if running local.
+        List<Coin> coinList = loadCoinsFromCSV("static/2003.csv"); // This line is specific to my docker build, might need to be changed if running local.
         Coin shownCoin = getRandomCoin(coinList);
         if (shownCoin == null) { // Generate a pre-set coin if null
             shownCoin = new Coin(13855,"Numismatica Quetzalcoatl","CC BY","https://en.numista.com/catalogue/photos/mexique/63c103aea16356.88371709-original.jpg","Numismatica Quetzalcoatl","CC BY","https://en.numista.com/catalogue/photos/mexique/63c103af0c7b95.78573787-original.jpg","Mexico"); 
@@ -94,6 +93,11 @@ public class MenuController {
         // Use that random number as the index to get a coin from the list
         Coin randomCoin = coinList.get(random);
         return randomCoin;
+    }
+
+    @GetMapping("/instructions")
+    public String instructions(){ 
+        return "parameters";
     }
     
 }
