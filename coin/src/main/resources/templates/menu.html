@@ -50,11 +50,11 @@
       <!--use this to get answers easy when testing<p th:text="${shownCoin.reversePic}"></p>-->
       <form action="/" th:action="@{/}" th:object="${answer}" method="post">
         <div class="d-flex justify-content-center">
-          <select class="selectpicker show-tick" data-size="3" data-dropup-auto="false" data-live-search="true"
+          <select class="selectpicker border show-tick" data-size="auto" data-dropup-auto="false" data-live-search="true"
             data-width="300px" id="dropdown" th:field="*{answer}">
           </select>
+          <button type="submit" name="answer" class="btn btn-secondary d-flex justify-content-center">Submit</button>
         </div>
-        <button type="submit" name="answer" class="btn btn-secondary">Submit</button>
       </form>
     </div>
   </div>
