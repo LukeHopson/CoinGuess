@@ -70,6 +70,22 @@
       $('#dropdown').selectpicker({
         dropupAuto: false
       });
+
+      $('#dropdown').on('show.bs.select', function () {
+        var $this = $(this);
+        var $dropdownMenu = $this.next('.dropdown-menu');
+        var windowHeight = $(window).height();
+        var dropdownOffset = $this.offset().top;
+        var dropdownHeight = $dropdownMenu.outerHeight();
+        var spaceBelow = windowHeight - (dropdownOffset + $this.outerHeight());
+
+        if (spaceBelow < dropdownHeight) {
+          $dropdownMenu.css({
+            'max-height': spaceBelow - 10 + 'px',
+            'overflow-y': 'auto'
+          });
+        }
+      });
     });
   </script>
   <script src="/menu.js"></script>
