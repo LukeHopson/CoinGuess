@@ -58,32 +58,8 @@
     </div>
   </div>
 
-  <script>
-    $(document).ready(function() {
-      $('#dropdown').select2({
-        dropdownAutoWidth: true,
-        width: '100%',
-        dropdownParent: $('body'), 
-        dropdownCssClass: 'select2-dropdown-custom' 
-      });
-
-      function adjustDropdownHeight() {
-        const windowHeight = $(window).height();
-        const dropdown = $('.select2-dropdown-custom');
-        dropdown.css('max-height', windowHeight * 0.6 + 'px'); 
-        dropdown.css('overflow-y', 'auto');
-      }
-
-      $(window).on('resize', adjustDropdownHeight);
-      $('#dropdown').on('select2:open', adjustDropdownHeight);
-
-      // Disable drop-up
-      $.fn.select2.defaults.set('dropdownPosition', 'below');
-
-    });
-  </script>
-
   <script src="/menu.js"></script>
+  <script src="/script.js"></script>
 </body>
 
 </html>

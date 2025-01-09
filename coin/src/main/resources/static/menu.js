@@ -23,12 +23,7 @@ const countries = [
     "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe", "West African States", "East Caribbean States", "Central African States",
 ];
 
-const dropdown = document.getElementById("dropdown");
-
-function sendToDropdown(country) { 
-    const element = document.createElement('option');
-    element.innerText = country.trim();
-    dropdown.appendChild(element);
-}
-
-countries.forEach(sendToDropdown);
+const dropdown = $('#dropdown');
+countries.forEach(country => {
+  dropdown.append(new Option(country, country));
+});
