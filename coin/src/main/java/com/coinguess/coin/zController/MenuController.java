@@ -100,5 +100,10 @@ public class MenuController {
     public String instructions(){ 
         return "parameters";
     }
+
+    @GetMapping("/about")
+    public String about(){ 
+        return "about";
+    }
     
 }
