@@ -22,13 +22,35 @@
         href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
     <title>About</title>
 </head>
-<body>
-    <div class="container d-flex flex-column align-items-center justify-content-center min-vh-100 mt-5 mb-5">
+<body class="bg-muted">
+    <!--Nav Bar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Coin Guess</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/instructions">Instructions</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">About</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container d-flex justify-content-center mt-5 mb-2">
         <div class="bg-white p-4 rounded shadow w-100" style="max-width: 800px;">
             <h4 class="text-center mb-4">About</h4>
             <p>This is a simple coin guessing game where you must guess the country of a coin, given an image of it!</p>
-            <p>The source code can be found here: https://github.com/LukeHopson/CoinGuess</p>
-            <p>I made this script to get most of the coin info from Numistia's API: https://github.com/LukeHopson/numista-API-scraper</p>
+            <p>My source code can be found here: <a href="https://github.com/LukeHopson/CoinGuess">GitHub Repository</a></p>
+            <p>I made this script for Numista's API to get my data: <a href="https://github.com/LukeHopson/numista-API-scraper">Numsita-API-Scraper</a></p>
+            <h4 class = "text-center mb-4">Image Usage</h4>
+            <p>All images and coin details were sourced from Numista</p>
+            <p>All images used in my dataset fall under one of the following licenses CC0, CC BY, CC BY-NC, CC BY-NC-SA</p>
         </div>
     </div>
 </body>
