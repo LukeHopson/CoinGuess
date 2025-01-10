@@ -1,4 +1,4 @@
-package com.coinguess.coin.zController;
+package com.coinguess.coin.Controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,7 +27,7 @@ public class MenuController {
 
     @GetMapping("/")
     public String menuForm(Model model, HttpSession session) { 
-        List<Coin> coinList = loadCoinsFromCSV("static/curated.csv"); // This path (static/2003.csv) is specific to my docker build, might need to be changed to src/main/resources/static/2003.csv if running local.
+        List<Coin> coinList = loadCoinsFromCSV("src/main/resources/static/2003.csv"); // This path (static/2003.csv) is specific to my docker build, might need to be changed to src/main/resources/static/2003.csv if running local.
         Coin shownCoin = getRandomCoin(coinList);
         if (shownCoin == null) { // Generate a pre-set coin if null
             shownCoin = new Coin(13855,"Numismatica Quetzalcoatl","CC BY","https://en.numista.com/catalogue/photos/mexique/63c103aea16356.88371709-original.jpg","Numismatica Quetzalcoatl","CC BY","https://en.numista.com/catalogue/photos/mexique/63c103af0c7b95.78573787-original.jpg","Mexico"); 
